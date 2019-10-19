@@ -13,5 +13,10 @@ $db=new mysqli($host,$db_user,$db_password,$database);
 // Check connection
 if ($db->connect_error) {
     die("Connection failed: " . $db->connect_error);
+}
+$query = $db->query("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '$database' AND TABLE_NAME = 'products'");
+
+while($row = $query->fetch_assoc()){
+    $result[] = $row;
 } 
 ?>
